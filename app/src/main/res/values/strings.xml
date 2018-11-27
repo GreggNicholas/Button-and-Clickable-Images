@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">MAD LIBS</string>
+    <string name="favorite_color">Favorite Color</string>
+    <string name="textview">Welcome to Mad Libs!\nFirst, What is your favorite Color?</string>
+    <string name="welcomeButton">Let\'s Start!</string>
+    <!--Activity_main2-->
+    <string name="button2">Next</string>
+    <string name="input2">Favorite Animal?</string>
+    <string name="textview2">Let\'s start this off with your favorite animal.\nCrazier the better ;)</string>
+    <!--Activity_main3-->
+    <string name="textview3">What is your favorite dessert?</string>
+    <string name="button3">Next</string>
+    <string name="input3">Favorite dessert?</string>
+
+
+</resources>
