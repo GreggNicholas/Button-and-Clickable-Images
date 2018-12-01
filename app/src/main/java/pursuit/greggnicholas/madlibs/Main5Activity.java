@@ -5,49 +5,32 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Surface;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Random;
 
-public class Main2Activity extends AppCompatActivity {
-
-    private String word;
-    private EditText lib;
-    private Button btn;
+public class Main5Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        lib = (EditText) findViewById(R.id.word2);
+        setContentView(R.layout.activity_main5);
+
+        Button button5 = (Button) findViewById(R.id.button5);
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Main6Activity.class);
+                startActivity(intent);
+            }
+        });
         setRandomBackgroundColor();
-
     }
-        public void onClick1(View view) {
-
-
-            Intent intent = new Intent(getApplicationContext(), Main3Activity.class);
-            word = lib.getText().toString();
-
-
-            intent.putExtra("userInput", word);
-            startActivity(intent);
-            finish();
-
-
-        }
-
-
-
-
 
 
     private void setRandomBackgroundColor() {
@@ -58,26 +41,19 @@ public class Main2Activity extends AppCompatActivity {
     }
 
     class OrientationUtils {
-        private OrientationUtils() {
-        }
+        private OrientationUtils() {}
 
-        /**
-         * Locks the device window in landscape mode.
-         */
+        /** Locks the device window in landscape mode. */
         public void lockOrientationLandscape(Activity activity) {
             activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
 
-        /**
-         * Locks the device window in portrait mode.
-         */
+        /** Locks the device window in portrait mode. */
         public void lockOrientationPortrait(Activity activity) {
             activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
-        /**
-         * Locks the device window in actual screen mode.
-         */
+        /** Locks the device window in actual screen mode. */
         public void lockOrientation(Activity activity) {
             final int orientation = activity.getResources().getConfiguration().orientation;
             final int rotation = ((WindowManager) activity.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getRotation();
@@ -88,24 +64,26 @@ public class Main2Activity extends AppCompatActivity {
 
             // Build.VERSION.SDK_INT <= Build.VERSION_CODES.FROYO
 
-            if (rotation == Surface.ROTATION_0 || rotation == Surface.ROTATION_90) {
-                if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            if (rotation == Surface.ROTATION_0 || rotation == Surface.ROTATION_90){
+                if (orientation == Configuration.ORIENTATION_PORTRAIT){
                     activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                } else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                }
+                else if (orientation == Configuration.ORIENTATION_LANDSCAPE){
                     activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                 }
-            } else if (rotation == Surface.ROTATION_180 || rotation == Surface.ROTATION_270) {
-                if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            }
+            else if (rotation == Surface.ROTATION_180 || rotation == Surface.ROTATION_270)
+            {
+                if (orientation == Configuration.ORIENTATION_PORTRAIT){
                     activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT);
-                } else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                }
+                else if (orientation == Configuration.ORIENTATION_LANDSCAPE){
                     activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE);
                 }
             }
         }
 
-        /**
-         * Unlocks the device window in user defined screen mode.
-         */
+        /** Unlocks the device window in user defined screen mode. */
         public void unlockOrientation(Activity activity) {
             activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER);
         }
